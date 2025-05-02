@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guest Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
+    .details-card { border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
+    .details-header { background: linear-gradient(135deg, #1b7670, #7a5c3a); color: #fff; padding: 1.5rem; text-align: center; }
+    .guest-photo, .placeholder-photo { border-radius: 8px; }
+    .guest-photo { width: 100%; object-fit: cover; }
+    .placeholder-photo { background-color: #e9ecef; display: flex; align-items: center; justify-content: center; height: 200px; color: #6c757d; }
+    .info-label { font-weight: 600; color: #7a5c3a; }
+    .info-value { color: #333; }
+    .section { padding: 1rem 1.5rem; }
+    .section + .section { border-top: 1px solid #ddd; }
+    .action-btns .btn { border-radius: 50px; padding: 0.5rem 1.5rem; }
+    .btn-warning { background-color: #7a5c3a; border: none; }
+    .btn-warning:hover { background-color: #645131; }
+    .btn-danger { background-color: #d9534f; border: none; }
+    .btn-secondary { background-color: #6c757d; border: none; }
+  </style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="container my-5">
+  <div class="card details-card mx-auto" style="max-width: 900px;">
+    <div class="details-header">
+      <h2 th:text="${guest.name}">Guest Name</h2>
+    </div>
+    <div class="section row g-4">
+      <div class="col-md-4">
+        <div th:if="${photoBase64}">
+          <img th:src="@{'data:image/jpeg;base64,' + ${photoBase64}}" alt="Guest Photo" class="guest-photo">
+        </div>
+        <div th:unless="${photoBase64}" class="placeholder-photo">
+          No Photo Available
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row g-3">
+          <div class="col-6"><span class="info-label">Email:</span> <span class="info-value" th:text="${guest.email}"></span></div>
+          <div class="col-6"><span class="info-label">Phone:</span> <span class="info-value" th:text="${guest.phoneNumber}"></span></div>
+          <div class="col-6"><span class="info-label">Check-In:</span> <span class="info-value" th:text="${guest.checkInDate}"></span></div>
+          <div class="col-6"><span class="info-label">Check-Out:</span> <span class="info-value" th:text="${guest.checkOutDate}"></span></div>
+          <div class="col-6"><span class="info-label">DOB:</span> <span class="info-value" th:text="${guest.dateOfBirth}?:'N/A'"></span></div>
+          <div class="col-6"><span class="info-label">Nationality:</span> <span class="info-value" th:text="${guest.nationality}?:'N/A'"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="section row g-3">
+      <div class="col-md-6"><span class="info-label">Address:</span> <span class="info-value" th:text="${guest.address}?:'N/A'"></span></div>
+      <div class="col-md-6"><span class="info-label">Emergency Contact:</span> <span class="info-value" th:text="${guest.emergencyContact}?:'N/A'"></span></div>
+      <div class="col-md-6"><span class="info-label">Room Pref:</span> <span class="info-value" th:text="${guest.roomTypePreference}?:'N/A'"></span></div>
+      <div class="col-md-6"><span class="info-label">Bed Pref:</span> <span class="info-value" th:text="${guest.bedTypePreference}?:'N/A'"></span></div>
+      <div class="col-md-6"><span class="info-label">Smoking:</span> <span class="info-value" th:text="${guest.smokingPreference}?:'N/A'"></span></div>
+      <div class="col-md-6"><span class="info-label">Dietary:</span> <span class="info-value" th:text="${guest.dietaryPreferences}?:'N/A'"></span></div>
+    </div>
+    <div class="section row g-3">
+      <div class="col-md-6"><span class="info-label">Communication:</span> <span class="info-value" th:text="${guest.communicationMethod}?:'N/A'"></span></div>
+      <div class="col-md-6"><span class="info-label">View Pref:</span> <span class="info-value" th:text="${guest.viewPreference}?:'N/A'"></span></div>
+      <div class="col-md-6"><span class="info-label">Hobbies:</span> <span class="info-value" th:text="${guest.hobbies}?:'N/A'"></span></div>
+      <div class="col-md-6"><span class="info-label">Favorite Activities:</span> <span class="info-value" th:text="${guest.favoriteActivities}?:'N/A'"></span></div>
+    </div>
+    <div class="section row g-3">
+      <div class="col-md-6"><span class="info-label">Last Stay:</span> <span class="info-value" th:text="${guest.lastStayDate}?:'N/A'"></span></div>
+      <div class="col-md-6"><span class="info-label">Total Stays:</span> <span class="info-value" th:text="${guest.totalStays}?:'0'"></span></div>
+      <div class="col-md-6"><span class="info-label">Loyalty Status:</span> <span class="info-value" th:text="${guest.loyaltyProgramStatus}?:'None'"></span></div>
+      <div class="col-md-6"><span class="info-label">Last Updated:</span> <span class="info-value" th:text="${guest.lastUpdated}?:'N/A'"></span></div>
+    </div>
+    <div class="section action-btns text-end">
+      <a th:href="@{/web/guests/edit/{id}(id=${guest.id})}" class="btn btn-warning me-2">Edit</a>
+      <a th:href="@{/web/guests/delete/{id}(id=${guest.id})}" class="btn btn-danger me-2" onclick="return confirm('Are you sure?')">Delete</a>
+      <a th:href="@{/web/guests}" class="btn btn-secondary">Back to Guests</a>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Room</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
+        .card-form { border-top: 5px solid #7a5c3a; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
+        .card-header { background: linear-gradient(135deg, #1b7670, #7a5c3a); color: #fff; text-align: center; padding: 1.5rem; }
+        .section-title { font-size: 1.25rem; font-weight: 600; color: #7a5c3a; margin-top: 1rem; margin-bottom: 0.75rem; border-bottom: 2px solid #1b7670; display: inline-block; }
+        .form-label { font-weight: 600; color: #7a5c3a; }
+        .form-control:focus { border-color: #1b7670; box-shadow: 0 0 0 0.2rem rgba(27,118,112,0.25); }
+        .btn-primary { background-color: #1b7670; border: none; border-radius: 50px; padding: 0.5rem 1.5rem; transition: background-color 0.3s; }
+        .btn-primary:hover { background-color: #145a55; }
+        .btn-secondary { border-radius: 50px; padding: 0.5rem 1.5rem; }
+        .error-text { color: #dc3545; font-size: 0.875rem; }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="container py-5">
+    <div class="card card-form mx-auto" style="max-width: 800px;">
+        <div class="card-header">
+            <h2>Add New Room</h2>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/web/rooms}" th:object="${room}" method="post" class="row g-3">
+
+                <div class="section-title">Room Details</div>
+                <div class="col-md-6">
+                    <label for="number" class="form-label">Room Number</label>
+                    <input type="text" class="form-control" id="number" th:field="*{number}" placeholder="e.g. 101" required>
+                    <div class="error-text" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="roomType" class="form-label">Room Type</label>
+                    <select class="form-control" id="roomType" th:field="*{roomType}" required>
+                        <option value="">Select type</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Deluxe">Deluxe</option>
+                        <option value="Suite">Suite</option>
+                    </select>
+                    <div class="error-text" th:if="${#fields.hasErrors('roomType')}" th:errors="*{roomType}"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="rate" class="form-label">Nightly Rate ($)</label>
+                    <input type="number" step="0.01" class="form-control" id="rate" th:field="*{rate}" placeholder="0.00" required>
+                    <div class="error-text" th:if="${#fields.hasErrors('rate')}" th:errors="*{rate}"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="capacity" class="form-label">Capacity (Max Guests)</label>
+                    <input type="number" class="form-control" id="capacity" th:field="*{capacity}" placeholder="e.g. 2" required>
+                    <div class="error-text" th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}"></div>
+                </div>
+
+                <div class="section-title">Location & Features</div>
+                <div class="col-md-6">
+                    <label for="floorNumber" class="form-label">Floor Number</label>
+                    <input type="number" class="form-control" id="floorNumber" th:field="*{floorNumber}" placeholder="e.g. 1" required>
+                    <div class="error-text" th:if="${#fields.hasErrors('floorNumber')}" th:errors="*{floorNumber}"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="viewType" class="form-label">View Type</label>
+                    <select class="form-control" id="viewType" th:field="*{viewType}" required>
+                        <option value="">Select view</option>
+                        <option value="Ocean View">Ocean View</option>
+                        <option value="Garden View">Garden View</option>
+                        <option value="City View">City View</option>
+                        <option value="None">None</option>
+                    </select>
+                    <div class="error-text" th:if="${#fields.hasErrors('viewType')}" th:errors="*{viewType}"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="size" class="form-label">Size (sqm)</label>
+                    <input type="number" step="0.1" class="form-control" id="size" th:field="*{size}" placeholder="e.g. 25.5" required>
+                    <div class="error-text" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="accessibilityFeatures" class="form-label">Accessibility Features</label>
+                    <textarea class="form-control" id="accessibilityFeatures" th:field="*{accessibilityFeatures}" rows="2"></textarea>
+                </div>
+
+                <div class="section-title">Status & Amenities</div>
+                <div class="col-md-6">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-control" id="status" th:field="*{status}" required>
+                        <option value="">Select status</option>
+                        <option value="Available">Available</option>
+                        <option value="Occupied">Occupied</option>
+                        <option value="Under Maintenance">Under Maintenance</option>
+                    </select>
+                    <div class="error-text" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastMaintenanceDate" class="form-label">Last Maintenance Date</label>
+                    <input type="date" class="form-control" id="lastMaintenanceDate" th:field="*{lastMaintenanceDate}">
+                </div>
+                <div class="col-12">
+                    <label for="amenities" class="form-label">Amenities</label>
+                    <textarea class="form-control" id="amenities" th:field="*{amenities}" rows="3" placeholder="e.g. WiFi, TV, Mini-bar"></textarea>
+                </div>
+
+                <div class="col-12 text-end mt-4">
+                    <a th:href="@{/web/rooms}" class="btn btn-secondary me-2">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Save Room</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

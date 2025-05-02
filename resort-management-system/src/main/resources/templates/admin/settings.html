@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>System Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
+        .container { max-width: 800px; margin: 4rem auto; }
+        .card { border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .card-header {
+            background: linear-gradient(135deg, #1b7670, #7a5c3a);
+            color: #fff;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #1b7670;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #145a55;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        .loyalty-tier { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+<header th:replace="fragments/navbar :: navbar"></header>
+<div class="container">
+    <div th:replace="~{fragments/messages :: messages}"></div>
+    <div class="card">
+        <div class="card-header">System Settings</div>
+        <div class="card-body">
+            <form th:action="@{/settings}" th:object="${settings}" method="post">
+                <div class="mb-3">
+                    <label for="baseRoomPrice" class="form-label">Base Room Price ($)</label>
+                    <input type="number" step="0.01" class="form-control" id="baseRoomPrice" th:field="*{baseRoomPrice}" required min="0">
+                </div>
+                <div class="mb-3">
+                    <label for="taxRate" class="form-label">Tax Rate (%)</label>
+                    <input type="number" step="0.01" class="form-control" id="taxRate" th:field="*{taxRate}" required min="0" max="100">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Loyalty Tiers</label>
+                    <div id="loyaltyTiers">
+                        <div th:each="tier,iterStat : ${settings.loyaltyTiers}" class="loyalty-tier row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" th:name="'tierNames[' + ${iterStat.index} + ']'" th:value="${tier.key}" placeholder="Tier Name (e.g., GOLD)" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" step="0.01" class="form-control" th:name="'discountPercentages[' + ${iterStat.index} + ']'" th:value="${tier.value}" placeholder="Discount (%)" required min="0" max="100">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary mt-2" onclick="addLoyaltyTier()">Add Tier</button>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a th:href="@{/web/dashboard}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function addLoyaltyTier() {
+        const container = document.getElementById('loyaltyTiers');
+        const index = container.children.length;
+        const tierDiv = document.createElement('div');
+        tierDiv.className = 'loyalty-tier row';
+        tierDiv.innerHTML = `
+            <div class="col-md-6">
+                <input type="text" class="form-control" name="tierNames[${index}]" placeholder="Tier Name (e.g., GOLD)" required>
+            </div>
+            <div class="col-md-6">
+                <input type="number" step="0.01" class="form-control" name="discountPercentages[${index}]" placeholder="Discount (%)" required min="0" max="100">
+            </div>
+        `;
+        container.appendChild(tierDiv);
+    }
+</script>
+</body>
+</html>

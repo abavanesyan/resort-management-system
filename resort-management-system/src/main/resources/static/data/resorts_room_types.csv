@@ -1,0 +1,357 @@
+Code,Room Type,Room Size,Bed Configuration,Max Occupancy,Room Price
+1,Double Room,1,1 king bed,36,100
+1,Twin Room,248,2 twin beds,36,151
+1,Double Room - Disability Access,1,1 king bed,36,74
+1,Deluxe Double Room,237,1 queen bed,36,100
+1,Junior Suite,1,"2 twin beds and, 1 king bed",36,100
+2,King Room,1,"1 sofa bed and, 1 queen bed",72,102
+2,Twin Room,398,"2 twin beds and, 1 sofa bed",72,128
+2,King Room with Balcony,1,1 king bed,72,77
+2,Twin Room with Balcony,409,2 twin beds,72,153
+3,Twin Room,323,2 twin beds,6,64
+3,Single Room,215,1 twin bed,6,89
+4,Double Room,1,1 queen bed,9,74
+4,Deluxe Studio,215,1 queen bed,9,82
+4,Studio with Lake View,280,1 queen bed,9,92
+4,Classic Triple Room,377,"1 twin bed and, 1 queen bed",9,97
+5,Double or Twin Room,1292,"3 twin beds and, 2 king beds",14,84
+6,Standard Double Room,1,1 queen bed,10,92
+6,Standard Triple Room,269,"1 twin bed and, 1 full bed",10,131
+6,Apartment with Balcony,1,1 twin bed,10,276
+6,Standard Single Room,323,1 queen bed,10,64
+7,One-Bedroom Apartment,355,N/A,6,"49, 51, 46"
+8,"Two-Bedroom House, Two-Bedroom Townhouse","538, 603",N/A,24,"70, 75, 86, 91, 107, 59, 74, 79, 89, 102, 112, 64"
+9,Standard Double or Twin Room - Treatment Included,1,2 twin beds,12,77
+9,Deluxe Double or Twin Room - Treatment included,243,1 full bed,12,84
+9,Comfort Double or Twin Room - Treatment Included,1,"2 twin beds and, 1 bunk bed",12,96
+9,Executive Double Suite - Treatment Included,243,2 twin beds,12,108
+9,Standard Single Room - Treatment Included,1,1 full bed,12,38
+9,Deluxe Single Room - Treatment Included,243,1 twin bed,12,42
+9,Comfort Single Room - Treatment Included,243,1 twin bed,12,48
+9,Luxury Single Room - Treatment Included,1,1 twin bed,12,54
+10,Two-Bedroom Apartment,667,N/A,4,49
+11,One-Bedroom Chalet,700,N/A,10,"110, 120, 130, 140"
+12,Two-Bedroom Apartment,431,N/A,13,"43, 48, 47, 46, 46, 49, 51"
+13,Twin Room,161,2 twin beds,9,26
+13,Standard Twin Room with Sofa,291,2 twin beds,9,20
+14,Apartment with Balcony,861,N/A,12,"51, 59, 64, 70, 77, 43"
+15,One-Bedroom Apartment,581,N/A,4,48
+16,Two-Bedroom Chalet,915,N/A,11,"140, 153, 166, 179, 192"
+17,One-Bedroom Apartment,1023,N/A,12,"48, 54, 61, 74, 87"
+18,One-Bedroom Apartment,603,N/A,3,64
+19,One-Bedroom Apartment,N/A,N/A,6,"38, 38, 34"
+20,Two-Bedroom Apartment,355,N/A,10,"41, 43, 48, 38"
+21,One-Bedroom Apartment,710,N/A,4,59
+22,One-Bedroom Apartment,323,N/A,3,46
+23,One-Bedroom Villa,1722,N/A,1,96
+24,Two-Bedroom House,538,N/A,10,"31, 33, 34, 38"
+25,Two-Bedroom House,1076,N/A,7,"184, 197, 204"
+26,Double Room,1,1 king bed,17,41
+26,Standard Twin Room,323,2 twin beds,17,41
+26,Suite,1,3 twin beds,17,66
+26,Standard Triple Room,323,1 twin bed,17,61
+26,Standard Family Room,646,1 king bed,17,54
+26,Single Room,1,1 king bed,17,66
+26,Deluxe Double Room,377,2 twin beds,17,79
+27,Twin Room,N/A,2 twin beds,3,"59, 53"
+28,Comfort Double Room,1,1 king bed,11,38
+28,Comfort Twin Room,248,2 twin beds,11,38
+28,Queen Room,1,2 twin beds,11,46
+28,Suite,215,1 king bed,11,51
+28,Triple Room,1,3 twin beds,11,46
+29,Double or Twin Room with Mountain View,323,"1 twin bed and, 2 full beds",2,31
+29,Triple Room,753,8 twin beds,2,31
+30,Standard Double Room,215,1 queen bed,3,36
+31,Three-Bedroom Apartment,861,N/A,13,"44, 66, 89, 110, 132, 153, 28"
+32,Standard Twin Room,1,2 twin beds,7,91
+32,Standard Double Room,1,1 full bed,7,105
+33,Double Room,N/A,1 full bed,3,"38, 34"
+34,Deluxe Double Room,215,1 king bed,11,102
+34,Deluxe Triple Room,269,"1 full bed and, 1 bunk bed",11,118
+34,Deluxe Family Suite,377,"2 full beds and, 1 bunk bed",11,146
+35,Three-Bedroom House,1076,N/A,1,214
+36,"Two-Bedroom Villa, Villa with Garden View, Three-Bedroom Villa, Superior Villa, Deluxe Villa","431, 861, 1615, 861, 1292",N/A,8,"67, 134, 105, 153, 125"
+37,Double Room,194,1 queen bed,31,48
+37,Double Room,215,1 queen bed,31,48
+37,Triple Room,388,"1 twin bed and, 1 queen bed",31,57
+37,Triple Room,215,"1 twin bed and, 1 queen bed",31,57
+37,Classic Quadruple Room,366,"2 twin beds and, 1 queen bed",31,67
+37,Family Room,484,"2 twin beds and, 1 queen bed",31,67
+37,Quadruple Room,323,2 queen beds,31,67
+37,Quadruple Room,366,2 queen beds,31,67
+37,Quadruple Room,388,"3 twin beds and, 1 queen bed",31,67
+38,Double Room with Balcony,N/A,1 full bed,3,"64, 57"
+39,Two-Bedroom Apartment,807,N/A,11,"69, 78, 92, 110, 51"
+40,One-Bedroom House,495,N/A,3,"78, 80"
+41,Standard Double or Twin Room,1,1 king bed,16,77
+41,Deluxe Double or Twin Room,280,"2 twin beds and, 1 king bed",16,68
+41,Deluxe Family Room,1,2 twin beds,16,82
+41,Family Room with Balcony,301,1 queen bed,16,73
+41,Two-Bedroom Chalet,1,2 twin beds,16,133
+42,Twin Room,269,"2 twin beds and, 1 sofa bed",53,112
+42,Twin Room,269,"2 twin beds and, 1 sofa bed",53,140
+42,Quadruple Room with Mountain View,269,"3 twin beds and, 1 sofa bed",53,168
+42,Double Room,323,"1 sofa bed and, 1 queen bed",53,90
+42,Deluxe Double Room with Balcony,215,1 queen bed,53,112
+42,Deluxe Double Room,323,"1 sofa bed and, 1 queen bed",53,140
+43,Double or Twin Room,1,"1 full bed and, 1 bunk bed",31,128
+43,Deluxe Studio,301,"2 twin beds and, 1 queen bed",31,324
+43,Deluxe Suite with Spa Bath,506,1 king bed,31,243
+43,King Suite with Balcony,506,"1 full bed and, 1 bunk bed",31,163
+44,"Suite with Garden View, Suite with Mountain View","700, 700",N/A,9,"166, 192, 197"
+45,Deluxe Queen Room,667,1 full bed,7,82
+45,Chalet,926,1 full bed,7,128
+46,Three-Bedroom Villa,1453,N/A,3,"143, 146, 149"
+47,Family Room with Mountain View,388,"2 twin beds and, 1 full bed",14,49
+47,Classic Quadruple Room,431,"2 twin beds and, 1 full bed",14,52
+48,"Two-Bedroom Apartment, Three-Bedroom Apartment","969, 1184",N/A,77,"43, 48, 64, 72, 86, 96, 108, 121, 117, 131, 66, 98, 131, 165, 166, 179, 49, 54, 73, 82, 97, 109, 120, 134, 144, 161, 169, 189, 174, 194, 176, 196, 67, 101, 134, 166, 199, 233, 240, 252, 264"
+49,Twin Room with Balcony,1,1 queen bed,20,67
+49,Double Room,215,2 twin beds,20,53
+49,Double Room with Mountain View,1,1 queen bed,20,80
+49,Deluxe Double Room,323,1 queen bed,20,64
+49,Studio,1,1 queen bed,20,80
+49,Single Room with Balcony,323,"1 sofa bed and, 1 queen bed",20,64
+50,Double or Twin Room with View,194,"1 full bed and, 1 sofa bed",12,73
+50,Double Room with Mountain View,301,2 full beds,12,63
+50,Double Room with Balcony,269,2 twin beds,12,93
+50,Family Room,495,"1 full bed and, 1 sofa bed",12,98
+51,Standard Double Room,215,1 full bed,25,79
+51,Double Room with Balcony,215,3 twin beds,25,62
+51,Triple Room with Balcony,258,"1 twin bed and, 1 full bed",25,107
+51,Standard Triple Room,237,"1 twin bed and, 1 full bed",25,104
+51,Family Room,269,"2 twin beds and, 1 full bed",25,106
+51,Chalet,538,"2 twin beds and, 1 full bed",25,111
+51,Family Room with Balcony,269,1 full bed,25,152
+51,Cottage,592,1 full bed,25,160
+51,Cottage,710,3 twin beds,25,203
+52,Budget Triple Room,366,"1 twin bed and, 1 full bed",27,52
+52,Economy Double Room,323,1 queen bed,27,63
+52,Double Room,323,1 queen bed,27,50
+52,Triple Room with Garden View,388,"1 twin bed and, 1 queen bed",27,57
+52,Double Room with Garden View,323,1 queen bed,27,52
+52,Family Room with Mountain View,323,"1 twin bed and, 1 full bed",27,63
+53,Three-Bedroom Villa,2476,N/A,1,358
+54,Economy Double Room,1,1 queen bed,10,61
+54,Double Room,258,1 queen bed,10,66
+54,Junior Suite with Balcony,1,"2 twin beds and, 1 queen bed",10,82
+54,Family Suite with Balcony,323,1 queen bed,10,97
+55,Standard Double Room,1,1 full bed,77,55
+55,Standard Twin Room,242,2 twin beds,77,84
+55,Deluxe Double Room with Balcony,1,1 full bed,77,112
+55,Standard Triple Room,242,3 twin beds,77,69
+55,Standard Family Room,1,"1 full bed and, 2 sofa beds",77,55
+56,Double Room,1,1 queen bed,11,66
+56,One-Bedroom Villa,258,2 full beds,11,90
+56,Comfort Quadruple Room,388,3 full beds,11,96
+56,Family Room with Balcony,1,1 queen bed,11,136
+57,Standard Double Room with Shared Bathroom,161,1 full bed,18,50
+57,Standard Twin Room with Shared Bathroom,237,1 full bed,18,72
+57,Deluxe Room,288,2 bunk beds,18,50
+57,Bed in 8-Bed Mixed Dormitory Room,172,1 full bed,18,72
+58,Superior Double or Twin Room,323,2 twin beds,6,56
+58,Quadruple Room,474,1 queen bed,6,74
+59,Two-Bedroom Villa,1184,N/A,11,"149, 158, 168, 186, 130"
+60,Five-Bedroom House,2583,N/A,1,255
+61,Three-Bedroom Home,936,N/A,2,"211, 213"
+62,Three-Bedroom Villa,2734,N/A,1,426
+63,"Two-Bedroom Townhouse, Two-Bedroom House, Six-Bedroom House","915, 1076, 2153",N/A,15,"78, 83, 92, 103, 161, 172"
+64,Two-Bedroom Villa,4123,N/A,1,241
+65,Cottage,2583,N/A,1,230
+66,Apartment,1722,N/A,11,"62, 83, 117, 124, 137, 138, 48"
+67,One-Bedroom Apartment,5382,N/A,10,"257, 294, 327, 331, 335, 338, 342, 346, 349, 368"
+68,Three-Bedroom Apartment,936,N/A,2,"137, 138"
+69,Standard Double or Twin Room,1,"2 twin beds and, 1 sofa bed",12,56
+69,Superior Double or Twin Room,280,1 full bed,12,97
+69,Studio with Garden View,1,"2 twin beds and, 1 sofa bed",12,92
+70,Apartment,258,N/A,1,304
+71,Double or Twin Room with Bathroom,172,2 twin beds,2,77
+72,Deluxe King Room with Mountain View,1,1 king bed,20,178
+72,Superior King Room with Panoramic Mountain View,420,1 king bed,20,187
+72,Executive King Room with Balcony,1,1 king bed,20,204
+73,Three-Bedroom Apartment,1076,N/A,22,"69, 77, 80, 89, 100, 111, 115, 128, 57, 64"
+74,Apartment with Mountain View,597,N/A,4,51
+75,Deluxe Villa,4876,N/A,1,307
+76,Triple Room with Mountain View,N/A,"1 full bed and, 1 bunk bed",6,"61, 76, 42"
+77,Two-Bedroom Villa,872,N/A,1,102
+78,"Deluxe Villa, Deluxe Villa, Deluxe Villa, Deluxe Villa, Deluxe Villa","807, 807, 1076, 1076, 1130",N/A,57,"132, 140, 156, 125, 141, 150, 166, 183, 133, 157, 166, 185, 203, 222, 148, 157, 166, 185, 203, 222, 148, 169, 179, 199, 219, 239, 159"
+79,Two-Bedroom Chalet,3003,N/A,1,307
+80,Holiday Home,700,N/A,3,"78, 64"
+81,Twin Room,1,2 twin beds,22,80
+81,Double Room,215,1 king bed,22,89
+81,Double Room with Balcony,1,1 king bed,22,102
+81,Deluxe Double Room,215,"1 king bed and, 1 sofa bed",22,102
+81,Suite with Balcony,1,2 twin beds,22,115
+81,Two-Bedroom Cottage,215,1 king bed,22,128
+81,Superior Suite,1,1 king bed,22,140
+81,Two-Bedroom Cottage,215,"1 king bed and, 1 sofa bed",22,131
+82,"Three-Bedroom House, Two-Bedroom House","1076, 1076",N/A,25,"37, 64, 84, 109, 123, 124, 128, 20, 51, 77, 102, 128, 26"
+83,Double or Twin Room,1,1 full bed,26,97
+83,Deluxe Room,194,"2 twin beds and, 1 queen bed",26,133
+83,Suite with Mountain View,1,1 full bed,26,158
+83,Junior Suite,441,1 queen bed,26,171
+83,Family Room with Mountain View,431,"2 full beds and, 1 sofa bed",26,197
+83,Family Suite,452,"2 twin beds and, 1 queen bed",26,184
+84,Family Room,323,1 queen bed,5,38
+84,Double Room with Extra Bed,237,1 full bed,5,38
+84,Small Single Room,161,1 twin bed,5,23
+85,Two-Bedroom House,1001,N/A,1,192
+86,Villa,2583,N/A,24,"98, 115, 119, 140, 141, 166, 165, 194, 180, 212, 195, 230"
+87,Holiday Home,646,N/A,22,"38, 46, 41, 51, 51, 64, 64, 77, 77, 89"
+88,Two-Bedroom Apartment,624,N/A,20,"49, 54, 52, 57, 57, 64, 46, 51"
+89,Two-Bedroom Apartment,215,N/A,10,"49, 52, 57, 46"
+90,Two-Bedroom House,700,N/A,22,"59, 86, 67, 95, 75, 105, 82, 118, 87, 128"
+91,Two-Bedroom Villa,1033,N/A,4,102
+92,Quadruple Room,1,"2 twin beds and, 1 full bed and, 1 sofa bed",15,38
+92,Twin Room,312,2 twin beds,15,51
+93,One-Bedroom Villa,861,N/A,20,"41, 44, 47, 49, 44, 47, 50, 55"
+94,Standard Double Room with Shared Bathroom,215,1 full bed,3,51
+95,Two-Bedroom Apartment,581,N/A,4,192
+96,Quadruple Room,1,"1 twin bed and, 1 sofa bed and, 1 queen bed",75,43
+96,Double or Twin Room,323,"1 twin bed and, 1 sofa bed and, 1 queen bed",75,48
+96,Studio - Split Level,1,"1 full bed and, 1 queen bed",75,60
+96,Classic Triple Room,377,"1 twin bed and, 1 sofa bed and, 1 queen bed",75,39
+97,Apartment,1755,N/A,28,"51, 56, 53, 59, 57, 63, 89, 98, 114, 126, 125, 139, 119, 126, 38, 42"
+98,King Suite with Balcony,323,1 twin bed,19,101
+98,King Studio with Sofa Bed,431,1 twin bed,19,121
+99,Double Room,215,1 king bed,19,97
+99,Deluxe Double Room with Shower,215,1 twin bed,19,103
+99,Double Room with Balcony,215,2 full beds,19,93
+99,Double Room with Mountain View,258,1 king bed,19,103
+99,Triple Room,194,1 king bed,19,98
+99,Double Room with Private Bathroom,172,1 queen bed,19,103
+100,Three-Bedroom Villa,2368,N/A,1,255
+101,"Villa, Villa, Villa, Villa","398, 969, 969, 969",N/A,42,"54, 46, 84, 89, 97, 105, 110, 118, 77, 84, 89, 97, 105, 110, 118, 77, 84, 89, 97, 105, 110, 118, 77"
+102,4-Bed Mixed Dormitory Room,377,"2 twin beds and, 1 full bed",26,20
+102,Twin Room,377,2 twin beds,26,30
+102,Twin Room,377,2 twin beds,26,40
+102,4-Bed Mixed Dormitory Room,377,4 twin beds,26,10
+103,Deluxe Double Room with Balcony,1,1 queen bed,12,43
+103,Double Room with Private Bathroom,323,1 queen bed,12,43
+103,Superior Twin Room,1,2 twin beds,12,43
+103,Twin Room with Private Bathroom,226,2 twin beds,12,43
+103,Double Room with Extra Bed,1,"1 twin bed and, 1 full bed",12,51
+103,Studio with Mountain View,248,6 twin beds,12,92
+104,One-Bedroom Apartment,N/A,N/A,3,"30, 16"
+105,Standard Double or Twin Room,1,1 full bed,111,69
+105,Comfort Double or Twin Room,215,2 twin beds,111,101
+105,Standard Double or Twin Room with Balcony,1,"1 full bed and, 1 sofa bed",111,133
+105,Deluxe Double or Twin Room,237,1 full bed,111,59
+105,Duplex Suite,1,2 twin beds,111,87
+105,Cottage,183,"1 full bed and, 1 sofa bed",111,119
+105,Two-Bedroom Cottage,1,"2 twin beds and, 1 sofa bed",111,75
+106,Standard Twin Room,1,2 twin beds,32,95
+106,Standard Double Room,215,1 queen bed,32,130
+106,Deluxe Double Room,1,2 twin beds,32,110
+106,Suite,269,1 queen bed,32,146
+106,Superior Quadruple Room,1,2 twin beds,32,130
+106,Family Suite,377,"2 twin beds and, 1 queen bed",32,166
+107,One-Bedroom Apartment,560,N/A,9,"72, 82, 86"
+108,Budget Double Room,1,1 queen bed,30,53
+108,Standard King Room,215,1 king bed,30,78
+108,Comfort Quadruple Room,1,"2 twin beds and, 1 queen bed",30,63
+108,Duplex Quadruple Room,269,"2 twin beds and, 1 queen bed",30,82
+109,"One-Bedroom Villa, Two-Bedroom Villa, Three-Bedroom Villa, Deluxe Villa, Superior Villa","538, 753, 1292, 1830, 3014",N/A,19,"38, 40, 43, 58, 84, 100, 115, 115, 130, 146, 153"
+110,King Room,269,1 queen bed,44,46
+110,King Room with Balcony,215,1 full bed,44,55
+110,Superior King Room,323,1 queen bed,44,41
+111,One-Bedroom Apartment,N/A,N/A,6,"37, 41, 33"
+112,One-Bedroom Apartment,646,N/A,10,"62, 71, 79, 88"
+113,Deluxe Double Room,1,"1 sofa bed and, 1 queen bed",22,61
+113,Deluxe Twin Room,323,"2 twin beds and, 1 sofa bed",22,82
+114,Standard Double Room,1,1 king bed,42,38
+114,Standard Twin Room,291,2 twin beds,42,56
+114,Deluxe Family Room,1,"1 twin bed and, 1 king bed and, 1 sofa bed",42,73
+114,Deluxe Double or Twin Room with Balcony,291,"1 king bed and, 1 sofa bed",42,38
+114,Superior Suite,1,"2 twin beds and, 1 sofa bed",42,56
+115,One-Bedroom Apartment,334,N/A,9,"32, 33, 31, 34"
+116,Apartment,667,N/A,6,"46, 51, 41"
+117,Three-Bedroom Apartment,861,N/A,4,61
+118,Two-Bedroom House,764,N/A,1,140
+119,One-Bedroom Apartment,495,N/A,6,"57, 64, 51"
+120,One-Bedroom Apartment,732,N/A,10,"41, 43, 48, 38"
+121,"Villa with Private Pool, Deluxe Villa","1453, 3229",N/A,2,"383, 588"
+122,One-Bedroom Apartment,N/A,N/A,3,"56, 51"
+123,One-Bedroom Apartment,646,N/A,3,38
+124,Two-Bedroom Apartment,1292,N/A,4,77
+125,Cottage,646,N/A,1,115
+126,Superior Chalet,1076,N/A,1,153
+127,Standard Queen Room,1,1 queen bed,43,85
+127,Double Room,226,"1 king bed and, 1 sofa bed",43,108
+127,Twin Room,1,"2 twin beds and, 1 sofa bed",43,101
+127,Deluxe King Room,291,"1 king bed and, 1 sofa bed",43,124
+128,Double or Twin Room,1,1 king bed,26,37
+128,Suite,215,2 twin beds,26,46
+128,Family Room,377,2 king beds,26,61
+128,Duplex Suite,1,1 twin bed,26,72
+129,One-Bedroom Apartment,334,N/A,6,"51, 51"
+130,One-Bedroom Apartment,N/A,N/A,10,"35, 37, 41, 33"
+131,One-Bedroom Apartment,377,N/A,6,"61, 68, 66"
+132,Studio with Balcony,377,"1 full bed and, 1 sofa bed",2,64
+133,Two-Bedroom House,753,N/A,1,89
+134,Studio Apartment with Balcony,431,1 full bed,4,56
+134,Superior Studio,431,1 full bed,4,140
+135,Chalet,3057,N/A,1,255
+136,One-Bedroom Apartment,301,N/A,2,51
+137,One-Bedroom Apartment,517,N/A,4,59
+138,"Villa, Villa, Villa, Two-Bedroom Apartment, Three-Bedroom Villa","1615, 2153, 2153, 2153, 2153",N/A,6,"74, 74, 87, 83, 92, 87"
+139,One-Bedroom Apartment,527,N/A,10,"54, 57, 64, 51"
+140,Deluxe Double Room with Balcony,334,1 queen bed,2,60
+141,One-Bedroom Apartment,517,N/A,10,"46, 49, 54, 43"
+142,Three-Bedroom House,1507,N/A,2,"179, 181"
+143,One-Bedroom Apartment,366,N/A,5,"51, 56"
+144,One-Bedroom Apartment,398,N/A,7,"46, 51"
+145,Three-Bedroom Apartment,689,N/A,1,64
+146,One-Bedroom Apartment,517,N/A,4,59
+147,One-Bedroom Apartment,538,N/A,2,64
+148,Large Double Room,1,1 queen bed,3,79
+148,Two-Bedroom Villa,269,1 queen bed,3,128
+149,Deluxe Apartment,344,N/A,3,57
+150,Twin Room with Shower,226,2 twin beds,4,31
+150,Double Room,377,1 bunk bed,4,36
+151,One-Bedroom Apartment,431,N/A,10,"39, 41, 46, 37"
+152,Three-Bedroom House,3229,N/A,6,"122, 136, 136, 151"
+153,Apartment,753,N/A,10,"102, 109, 115, 128"
+154,One-Bedroom Apartment,560,N/A,19,"57, 64, 66, 73, 69, 77, 62"
+155,Standard Double or Twin Room,1,"1 king bed and, 1 sofa bed",33,56
+155,Deluxe Double Room,209,"2 twin beds and, 1 sofa bed",33,76
+155,One-Bedroom Suite,371,"1 king bed and, 1 sofa bed",33,69
+156,Superior Villa,3714,N/A,1,307
+157,"Chalet, Chalet, Chalet","1292, 1313, 1528",N/A,9,"332, 358, 383"
+158,Twin Room,180,2 twin beds,4,38
+158,Deluxe Double Room,344,1 full bed,4,51
+159,Deluxe Double Room,323,"1 full bed and, 1 sofa bed",29,36
+159,Double Room,269,"1 full bed and, 1 sofa bed",29,36
+159,Deluxe Double Room,323,"1 twin bed and, 1 full bed",29,36
+159,Family Room,377,"1 full bed and, 1 sofa bed",29,41
+159,Family Room,377,1 full bed,29,41
+159,Family Suite,484,"1 full bed and, 1 sofa bed",29,46
+159,Family Suite,431,"1 full bed and, 1 sofa bed",29,56
+160,Budget Double Room,161,3 twin beds,23,51
+160,Twin Room,161,3 twin beds,23,41
+160,Deluxe Twin Room,194,4 twin beds,23,51
+160,One-Bedroom Suite,172,1 twin bed,23,41
+160,Triple Room,194,1 queen bed,23,61
+160,Deluxe Triple Room,215,2 twin beds,23,49
+161,One-Bedroom Apartment,344,N/A,2,56
+162,Villa,2153,N/A,1,255
+163,One-Bedroom Apartment,538,N/A,10,"65, 69, 77, 61"
+164,Apartment,3444,N/A,1,485
+165,Deluxe Villa,3444,N/A,1,255
+166,One-Bedroom Villa,N/A,N/A,7,"139, 147, 155, 163, 106"
+167,Standard Double Room,269,1 full bed,10,61
+167,Superior Double Room,323,1 queen bed,10,73
+167,Deluxe Double Room,431,1 king bed,10,85
+167,Quadruple Room,323,4 twin beds,10,109
+168,Two-Bedroom Apartment,624,N/A,16,"118, 217, 220, 119, 218, 221"
+169,One-Bedroom Chalet,1615,N/A,14,"161, 172, 184, 195, 207, 218, 230, 149"
+170,Three-Bedroom Chalet,1292,N/A,8,"146, 171, 197, 235"
+171,Villa with Private Pool,3552,N/A,2,"409, 347"
+172,Villa,10764,N/A,1,485
+173,One-Bedroom Apartment,334,N/A,6,"55, 61, 52"
+174,Two-Bedroom Apartment,861,N/A,1,46
+175,Budget Double Room,1,1 queen bed,16,59
+175,Suite with Balcony,269,"1 twin bed and, 1 queen bed",16,97
+175,Family Suite,700,"1 twin bed and, 1 queen bed",16,110
+175,Standard Triple Room,807,1 queen bed,16,84
+175,Deluxe Studio,1,"1 twin bed and, 1 queen bed",16,84
+175,Three-Bedroom Apartment with Mountain View,377,"1 twin bed and, 1 queen bed",16,197

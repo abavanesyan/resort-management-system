@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
+    .card-form { position: relative; border-top: 5px solid #7a5c3a; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 2rem; }
+    .card-header { background: linear-gradient(135deg, #1b7670, #7a5c3a); color: #fff; padding: 1rem 1.5rem; }
+    .section-title { font-size: 1.25rem; font-weight: 600; color: #7a5c3a; margin-bottom: 1rem; border-bottom: 2px solid #1b7670; display: inline-block; }
+    .form-label { font-weight: 600; color: #7a5c3a; }
+    .form-control:focus, .form-select:focus { border-color: #1b7670; box-shadow: 0 0 0 0.2rem rgba(27,118,112,0.25); }
+    .btn-primary { background-color: #1b7670; border: none; border-radius: 50px; padding: 0.5rem 1.5rem; transition: background-color 0.3s; }
+    .btn-primary:hover { background-color: #145a55; }
+    .btn-secondary, .btn-warning, .btn-danger { border-radius: 50px; padding: 0.5rem 1rem; }
+    .btn-secondary { background-color: #6c757d; border: none; }
+    .btn-warning { background-color: #7a5c3a; border: none; }
+    .btn-danger { background-color: #d9534f; border: none; }
+    .btn-secondary:hover { background-color: #5a6268; }
+    .btn-warning:hover { background-color: #645131; }
+    .btn-danger:hover { background-color: #c9302c; }
+    .table-card { background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); overflow: hidden; }
+    .table-card thead th { background-color: #1b7670; color: white; }
+    .table-card tbody tr:nth-of-type(odd) { background-color: #ffffff; }
+    .table-card tbody tr:nth-of-type(even) { background-color: #f9f9f9; }
+    .action-btns .btn-sm { border-radius: 50px; padding: 0.25rem 0.75rem; }
+    .download-btns { position: absolute; bottom: 1rem; left: 1rem; z-index: 10; }
+  </style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="container py-5">
+  <!-- Search & Add Staff -->
+  <div class="card card-form mx-auto" style="max-width: 800px;">
+    <div class="card-header">
+      <h3>Search & Add Staff</h3>
+    </div>
+    <div class="card-body position-relative">
+      <div class="row g-4">
+        <!-- Search Staff -->
+        <div class="col-md-6">
+          <div class="section-title">Search Staff</div>
+          <form th:action="@{/web/staff}" method="get" class="row g-3">
+            <div class="col-12">
+              <label for="searchQuery" class="form-label">Name, Email, or Role</label>
+              <input type="text" id="searchQuery" name="searchQuery" class="form-control" th:value="${searchQuery}" placeholder="Search...">
+            </div>
+            <div class="col-12 text-end">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Add Staff -->
+        <div class="col-md-6">
+          <div class="section-title">Add New Staff</div>
+          <form th:action="@{/web/staff}" method="post" th:object="${staff}" class="row g-3">
+            <div class="col-md-6">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>
+              <div class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
+              <div class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" th:field="*{email}" required>
+              <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="role" class="form-label">Role</label>
+              <select id="role" class="form-select" th:field="*{role}">
+                <option value="manager">Manager</option>
+                <option value="housekeeping">Housekeeping</option>
+                <option value="receptionist">Receptionist</option>
+              </select>
+              <div class="text-danger" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+            </div>
+            <div class="col-12 text-end mt-3">
+              <button type="submit" class="btn btn-primary">Add Staff</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Download Buttons -->
+      <div class="download-btns">
+        <a href="/api/staff/download" class="btn btn-secondary me-2">Download CSV</a>
+        <a href="/api/staff/download/pdf" class="btn btn-secondary">Download PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Staff List & Actions -->
+  <div class="table-card mx-auto" style="max-width: 100%;">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="s : ${staffList}">
+          <td><a th:href="@{/web/tasks/staff/{id}(id=${s.id})}" th:text="${s.firstName + ' ' + s.lastName}"></a></td>
+          <td th:text="${s.email}"></td>
+          <td th:text="${s.role}"></td>
+          <td class="action-btns">
+            <a th:href="@{/web/staff/edit/{id}(id=${s.id})}" class="btn btn-sm btn-warning">Edit</a>
+            <form th:action="@{/web/staff/delete/{id}(id=${s.id})}" method="post" style="display:inline;">
+              <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this staff member?')">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(staffList)}">
+          <td colspan="4" class="text-center py-4">No staff members found.</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

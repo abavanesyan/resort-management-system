@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resort Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
+    .container { max-width: 1200px; margin: 2rem auto; }
+    .card { border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+    .card-header {
+      background: linear-gradient(135deg, #1b7670, #7a5c3a);
+      color: #fff;
+      font-size: 1.25rem;
+      text-align: center;
+    }
+    .kpi-card { text-align: center; padding: 1rem; }
+    .kpi-value { font-size: 2rem; font-weight: bold; }
+    .kpi-label { font-size: 1rem; color: #666; }
+    .chart-container { position: relative; height: 300px; width: 100%; }
+    .table-container { max-height: 300px; overflow-y: auto; }
+  </style>
+</head>
+<body>
+<header th:replace="fragments/navbar :: navbar"></header>
+<div class="container">
+  <div th:replace="~{fragments/messages :: messages}"></div>
+
+  <!-- Key Metrics Section -->
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card kpi-card">
+        <div class="kpi-value" th:text="${availableRooms}">0</div>
+        <div class="kpi-label">Available Rooms</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card kpi-card">
+        <div class="kpi-value" th:text="${totalReservations}">0</div>
+        <div class="kpi-label">Total Reservations</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card kpi-card">
+        <div class="kpi-value" th:text="'$' + ${totalRevenue}">0</div>
+        <div class="kpi-label">Total Revenue</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card kpi-card">
+        <div class="kpi-value" th:text="${occupancyRate} + '%'">0%</div>
+        <div class="kpi-label">Occupancy Rate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trends Section -->
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Reservations Over Time (Last 6 Months)</div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="reservationTrendsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Revenue Over Time (Last 5 Months)</div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="revenueOverTimeChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Occupancy Rate Over Time (Last 5 Months)</div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="occupancyOverTimeChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Breakdowns Section -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Revenue by Room Type</div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="revenueByRoomTypeChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Booking Sources</div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="bookingSourcesChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Top Performing Staff</div>
+        <div class="card-body">
+          <div class="table-container">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Staff Name</th>
+                <th>Bookings Handled</th>
+                <th>Revenue Generated</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="staff : ${topStaff}">
+                <td th:text="${staff.name}">N/A</td>
+                <td th:text="${staff.bookingsHandled}">0</td>
+                <td th:text="'$' + ${staff.revenueGenerated}">0</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Top 3 Frequent Guests</div>
+        <div class="card-body">
+          <div class="table-container">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Total Stays</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="guest : ${frequentGuests}">
+                <td th:text="${guest.name}">N/A</td>
+                <td th:text="${guest.email}">N/A</td>
+                <td th:text="${guest.totalStays}">0</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script th:inline="javascript">
+  // Define chart colors
+  const primaryColor = '#1b7670';
+  const secondaryColor = '#7a5c3a';
+
+  // Trend Charts
+  // Reservations Over Time
+  const reservationTrendsLabels = /*[[${reservationTrendsLabels}]]*/ [];
+  const reservationTrendsData = /*[[${reservationTrendsData}]]*/ [];
+  new Chart(document.getElementById('reservationTrendsChart'), {
+    type: 'line',
+    data: {
+      labels: reservationTrendsLabels,
+      datasets: [{
+        label: 'Reservations',
+        data: reservationTrendsData,
+        borderColor: primaryColor,
+        fill: false
+      }]
+    },
+    options: {
+      plugins: { legend: { display: true } },
+      scales: { y: { beginAtZero: true } }
+    }
+  });
+
+  // Revenue Over Time
+  const revenueOverTimeLabels = /*[[${revenueOverTimeLabels}]]*/ [];
+  const revenueOverTimeData = /*[[${revenueOverTimeData}]]*/ [];
+  new Chart(document.getElementById('revenueOverTimeChart'), {
+    type: 'line',
+    data: {
+      labels: revenueOverTimeLabels,
+      datasets: [{
+        label: 'Revenue ($)',
+        data: revenueOverTimeData,
+        borderColor: primaryColor,
+        fill: false
+      }]
+    },
+    options: {
+      plugins: { legend: { display: true } },
+      scales: { y: { beginAtZero: true } }
+    }
+  });
+
+  // Occupancy Rate Over Time
+  const occupancyOverTimeLabels = /*[[${occupancyOverTimeLabels}]]*/ [];
+  const occupancyOverTimeData = /*[[${occupancyOverTimeData}]]*/ [];
+  new Chart(document.getElementById('occupancyOverTimeChart'), {
+    type: 'line',
+    data: {
+      labels: occupancyOverTimeLabels,
+      datasets: [{
+        label: 'Occupancy Rate (%)',
+        data: occupancyOverTimeData,
+        borderColor: primaryColor,
+        fill: false
+      }]
+    },
+    options: {
+      plugins: { legend: { display: true } },
+      scales: { y: { beginAtZero: true, max: 100 } }
+    }
+  });
+
+  // Detailed Breakdown Charts
+  // Revenue by Room Type
+  const revenueByRoomTypeLabels = /*[[${revenueByRoomTypeLabels}]]*/ [];
+  const revenueByRoomTypeData = /*[[${revenueByRoomTypeData}]]*/ [];
+  new Chart(document.getElementById('revenueByRoomTypeChart'), {
+    type: 'bar',
+    data: {
+      labels: revenueByRoomTypeLabels,
+      datasets: [{
+        label: 'Revenue ($)',
+        data: revenueByRoomTypeData,
+        backgroundColor: primaryColor
+      }]
+    },
+    options: {
+      plugins: { legend: { display: true } },
+      scales: { y: { beginAtZero: true } }
+    }
+  });
+
+  // Booking Sources
+  const bookingSourcesLabels = /*[[${bookingSourcesLabels}]]*/ [];
+  const bookingSourcesData = /*[[${bookingSourcesData}]]*/ [];
+  new Chart(document.getElementById('bookingSourcesChart'), {
+    type: 'pie',
+    data: {
+      labels: bookingSourcesLabels,
+      datasets: [{
+        data: bookingSourcesData,
+        backgroundColor: [primaryColor, secondaryColor, '#d3b99a']
+      }]
+    },
+    options: {
+      plugins: { legend: { position: 'bottom' } }
+    }
+  });
+</script>
+</body>
+</html>
+

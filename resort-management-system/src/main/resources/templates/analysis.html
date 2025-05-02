@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analysis Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
+        .container { max-width: 1200px; margin: 2rem auto; }
+        .card { border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+        .card-header {
+            background: linear-gradient(135deg, #1b7670, #7a5c3a);
+            color: #fff;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+        .chart-container { position: relative; height: 400px; width: 100%; }
+    </style>
+</head>
+<body>
+<header th:replace="fragments/navbar :: navbar"></header>
+
+<div class="container">
+    <div th:replace="~{fragments/messages :: messages}"></div>
+
+    <!-- Error Message (if any) -->
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+
+    <!-- Analysis Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Facilities Analysis (Resorts)</div>
+                <div class="card-body">
+                    <!-- Show the bar chart if available -->
+                    <div class="chart-container" th:if="${showPlot}">
+                        <img th:src="@{/images/facilities_plot.png}" alt="Facilities Bar Plot" class="img-fluid" />
+                    </div>
+
+                    <!-- Show a warning if no chart -->
+                    <div th:unless="${showPlot}" class="alert alert-warning">
+                        No analysis data available.
+                    </div>
+
+                    <!-- Display facility counts -->
+                    <div th:if="${facilityCounts}">
+                        <h5>Facility Counts:</h5>
+                        <ul th:each="entry : ${facilityCounts}">
+                            <li th:text="'Code ' + ${entry.key} + ': ' + ${entry.value} + ' facilities'"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

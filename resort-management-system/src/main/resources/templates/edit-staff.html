@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edit Staff Member</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
+    .card-form { border-top: 5px solid #7a5c3a; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; max-width: 600px; margin: 2rem auto; }
+    .card-header { background: linear-gradient(135deg, #1b7670, #7a5c3a); color: #fff; text-align: center; padding: 1.5rem; }
+    .card-body { padding: 2rem; }
+    .form-label { font-weight: 600; color: #7a5c3a; }
+    .form-control:focus, .form-select:focus { border-color: #1b7670; box-shadow: 0 0 0 0.2rem rgba(27,118,112,0.25); }
+    .btn-primary { background-color: #1b7670; border: none; border-radius: 50px; padding: 0.5rem 1.5rem; transition: background-color 0.3s; }
+    .btn-primary:hover { background-color: #145a55; }
+    .btn-secondary { background-color: #6c757d; border: none; border-radius: 50px; padding: 0.5rem 1.5rem; }
+    .btn-secondary:hover { background-color: #5a6268; }
+    .section-title { font-size: 1.25rem; font-weight: 600; color: #7a5c3a; margin-bottom: 1.5rem; border-bottom: 2px solid #1b7670; display: inline-block; }
+    .error-text { color: #dc3545; font-size: 0.875rem; }
+    .back-link { margin-top: 1rem; display: inline-block; }
+  </style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="card card-form">
+  <div class="card-header">
+    <h2>Edit Staff Member</h2>
+  </div>
+  <div class="card-body">
+    <div class="section-title">Member Details</div>
+    <form th:action="@{/web/staff/update/{id}(id=${staff.id})}" th:object="${staff}" method="post" class="row g-4">
+      <div class="col-6">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>
+        <div class="error-text" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+      </div>
+      <div class="col-6">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
+        <div class="error-text" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+      </div>
+      <div class="col-12">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" class="form-control" th:field="*{email}" required>
+        <div class="error-text" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+      </div>
+      <div class="col-12">
+        <label for="role" class="form-label">Role</label>
+        <select id="role" class="form-select" th:field="*{role}">
+          <option value="manager" th:selected="${staff.role=='manager'}">Manager</option>
+          <option value="housekeeping" th:selected="${staff.role=='housekeeping'}">Housekeeping</option>
+          <option value="receptionist" th:selected="${staff.role=='receptionist'}">Receptionist</option>
+        </select>
+        <div class="error-text" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+      </div>
+      <div class="col-12 text-end">
+        <a th:href="@{/web/staff}" class="btn btn-secondary back-link">Cancel</a>
+        <button type="submit" class="btn btn-primary">Update Staff</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

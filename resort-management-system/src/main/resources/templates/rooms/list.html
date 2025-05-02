@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rooms</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
+    .section-title { font-size: 1.25rem; font-weight: 600; color: #7a5c3a; margin-bottom: 1rem; border-bottom: 2px solid #1b7670; display: inline-block; }
+    .btn-primary { background-color: #1b7670; border: none; border-radius: 50px; padding: 0.5rem 1.5rem; transition: background-color 0.3s; }
+    .btn-primary:hover { background-color: #145a55; }
+    .btn-secondary { border-radius: 50px; padding: 0.5rem 1.5rem; }
+    .search-card { background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .table-card { background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); overflow: hidden; }
+    .table-card thead th { background-color: #1b7670; color: white; }
+    .table-card tbody tr:nth-of-type(odd) { background-color: #ffffff; }
+    .table-card tbody tr:nth-of-type(even) { background-color: #f9f9f9; }
+    .action-btns .btn-sm { border-radius: 50px; padding: 0.25rem 0.75rem; }
+  </style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="container py-5">
+  <h1 class="mb-4">Rooms</h1>
+
+  <div class="search-card">
+    <div class="section-title">Filter Rooms</div>
+    <form th:action="@{/web/rooms}" method="get" class="row g-3">
+      <div class="col-md-2">
+        <select class="form-control" name="roomType">
+          <option value="">All Types</option>
+          <option value="Standard" th:selected="${roomType=='Standard'}">Standard</option>
+          <option value="Deluxe" th:selected="${roomType=='Deluxe'}">Deluxe</option>
+          <option value="Suite" th:selected="${roomType=='Suite'}">Suite</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-control" name="status">
+          <option value="">All Status</option>
+          <option value="Available" th:selected="${status=='Available'}">Available</option>
+          <option value="Occupied" th:selected="${status=='Occupied'}">Occupied</option>
+          <option value="Under Maintenance" th:selected="${status=='Under Maintenance'}">Maintenance</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <input type="number" class="form-control" name="capacity" th:value="${capacity}" placeholder="Min Capacity">
+      </div>
+      <div class="col-md-2">
+        <select class="form-control" name="smokingPolicy">
+          <option value="">All Smoking</option>
+          <option value="Smoking" th:selected="${smokingPolicy=='Smoking'}">Smoking</option>
+          <option value="Non-Smoking" th:selected="${smokingPolicy=='Non-Smoking'}">Non-Smoking</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-control" name="viewType">
+          <option value="">All Views</option>
+          <option value="Ocean View" th:selected="${viewType=='Ocean View'}">Ocean View</option>
+          <option value="Garden View" th:selected="${viewType=='Garden View'}">Garden View</option>
+          <option value="City View" th:selected="${viewType=='City View'}">City View</option>
+          <option value="None" th:selected="${viewType=='None'}">None</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <input type="number" class="form-control" name="floorNumber" th:value="${floorNumber}" placeholder="Floor #">
+      </div>
+      <div class="col-12 text-end mt-3">
+        <button type="submit" class="btn btn-primary me-2">Search</button>
+        <a th:href="@{/web/rooms}" class="btn btn-secondary">Clear</a>
+      </div>
+    </form>
+  </div>
+  <div class="d-flex justify-content-end gap-2 mb-3">
+    <a th:href="@{/web/rooms/download}" class="btn btn-primary">Download CSV</a>
+    <a th:href="@{/web/rooms/download_pdf}" class="btn btn-primary">Download PDF</a>
+    <a th:href="@{/web/rooms/new}" class="btn btn-primary">Add New Room</a>
+  </div>
+  <div class="table-card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Number</th>
+          <th>Rate ($)</th>
+          <th>Type</th>
+          <th>Capacity</th>
+          <th>Floor</th>
+          <th>View</th>
+          <th>Status</th>
+          <th>Last Maint.</th>
+          <th>Smoking</th>
+          <th>Size (sqm)</th>
+          <th>Amenities</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room : ${rooms}">
+          <td th:text="${room.id}"></td>
+          <td th:text="${room.number}"></td>
+          <td th:text="${#numbers.formatDecimal(room.rate,1,2)}"></td>
+          <td th:text="${room.roomType}"></td>
+          <td th:text="${room.capacity}"></td>
+          <td th:text="${room.floorNumber}"></td>
+          <td th:text="${room.viewType}"></td>
+          <td th:text="${room.status}"></td>
+          <td th:text="${room.lastMaintenanceDate}?:'N/A'"></td>
+          <td th:text="${room.smokingPolicy}"></td>
+          <td th:text="${#numbers.formatDecimal(room.size,1,1)}"></td>
+          <td th:text="${room.amenities}?:'None'"></td>
+          <td class="action-btns">
+            <a th:href="@{/web/rooms/edit/{id}(id=${room.id})}" class="btn btn-sm btn-warning">Edit</a>
+            <a th:href="@{/web/rooms/delete/{id}(id=${room.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

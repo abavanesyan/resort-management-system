@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reservations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
+        .card-form { border-top: 5px solid #7a5c3a; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
+        .card-header { background: linear-gradient(135deg, #1b7670, #7a5c3a); color: #fff; padding: 1rem 1.5rem; }
+        .section-title { font-size: 1.25rem; font-weight: 600; color: #7a5c3a; margin-bottom: 1rem; border-bottom: 2px solid #1b7670; display: inline-block; }
+        .btn-primary { background-color: #1b7670; border: none; border-radius: 50px; padding: 0.5rem 1.5rem; transition: background-color 0.3s; }
+        .btn-primary:hover { background-color: #145a55; }
+        .btn-secondary { border-radius: 50px; padding: 0.5rem 1.5rem; }
+        .table thead th { background-color: #1b7670; color: white; }
+        .table tbody tr:nth-of-type(odd) { background-color: #ffffff; }
+        .table tbody tr:nth-of-type(even) { background-color: #f9f9f9; }
+        .search-card { box-shadow: 0 2px 6px rgba(0,0,0,0.05); border-radius: 8px; padding: 1rem; background: white; margin-bottom: 1.5rem; }
+        .search-card .form-control { border-radius: 0.25rem; }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="container py-5">
+
+    <!-- Title and Action Buttons -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-7a5c3a">Reservations</h1>
+        <div class="d-flex justify-content-end gap-2 mb-3">
+            <a th:href="@{/web/reservations/download}" class="btn btn-primary">Download CSV</a>
+            <a th:href="@{/web/reservations/download_pdf}" class="btn btn-primary">Download PDF</a>
+            <a th:href="@{/web/reservations/new}" class="btn btn-primary">Create New Reservation</a>
+        </div>
+    </div>
+
+    <!-- Search Form -->
+    <div class="search-card">
+        <div class="section-title">Search Reservations</div>
+        <form th:action="@{/web/reservations}" method="get" class="row g-3">
+            <div class="col-md-3">
+                <input type="text" class="form-control" name="guestName" th:value="${guestName}" placeholder="Guest Name">
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" name="roomNumber" th:value="${roomNumber}" placeholder="Room Number">
+            </div>
+            <div class="col-md-2">
+                <input type="date" class="form-control" name="startDate" th:value="${startDate}" placeholder="Start Date">
+            </div>
+            <div class="col-md-2">
+                <input type="date" class="form-control" name="endDate" th:value="${endDate}" placeholder="End Date">
+            </div>
+            <div class="col-md-2 d-flex gap-2">
+                <button type="submit" class="btn btn-primary flex-grow-1">Search</button>
+                <a th:href="@{/web/reservations}" class="btn btn-secondary flex-grow-1">Clear</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Reservations Table -->
+    <div class="card-form">
+        <div class="card-body p-0">
+            <table class="table mb-0">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Guest</th>
+                    <th>Room</th>
+                    <th>Check-In</th>
+                    <th>Check-Out</th>
+                    <th>Discount (%)</th>
+                    <th>Total Cost ($)</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="reservation : ${reservations}">
+                    <td th:text="${reservation.id}"></td>
+                    <td th:text="${reservation.guest.name}"></td>
+                    <td th:text="${reservation.room.number}"></td>
+                    <td th:text="${reservation.checkInDate}"></td>
+                    <td th:text="${reservation.checkOutDate}"></td>
+                    <td th:text="${#numbers.formatDecimal(reservation.discount * 100, 1, 2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(reservation.totalCost, 1, 2)}"></td>
+                    <td>
+                        <a th:href="@{/web/reservations/edit/{id}(id=${reservation.id})}" class="btn btn-sm btn-warning">Edit</a>
+                        <a th:href="@{/web/reservations/delete/{id}(id=${reservation.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
