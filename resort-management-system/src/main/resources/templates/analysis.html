@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,7 @@
             font-size: 1.25rem;
             text-align: center;
         }
-        .chart-container { position: relative; height: 400px; width: 100%; }
+        .chart-container { position: relative; height: auto; width: 100%; text-align: center; }
     </style>
 </head>
 <body>
@@ -27,33 +27,78 @@
     <!-- Error Message (if any) -->
     <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
 
-    <!-- Analysis Section -->
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Facilities Analysis (Resorts)</div>
-                <div class="card-body">
-                    <!-- Show the bar chart if available -->
-                    <div class="chart-container" th:if="${showPlot}">
-                        <img th:src="@{/images/facilities_plot.png}" alt="Facilities Bar Plot" class="img-fluid" />
-                    </div>
+    <!-- Facilities Analysis -->
+    <div class="card">
+        <div class="card-header">Facilities Analysis (Resorts)</div>
+        <div class="card-body">
+            <div class="chart-container" th:if="${showPlot}">
+                <img th:src="@{${facilityPlotPath}}" alt="Facilities analysis bar chart" class="img-fluid" />
+            </div>
+            <div class="alert alert-warning" th:if="${!showPlot}">
+                Facilities chart not available.
+            </div>
 
-                    <!-- Show a warning if no chart -->
-                    <div th:unless="${showPlot}" class="alert alert-warning">
-                        No analysis data available.
-                    </div>
-
-                    <!-- Display facility counts -->
-                    <div th:if="${facilityCounts}">
-                        <h5>Facility Counts:</h5>
-                        <ul th:each="entry : ${facilityCounts}">
-                            <li th:text="'Code ' + ${entry.key} + ': ' + ${entry.value} + ' facilities'"></li>
-                        </ul>
-                    </div>
-                </div>
+            <div th:if="${facilityCounts}">
+                <h5>Facility Counts:</h5>
+                <ul class="mb-0" th:each="entry : ${facilityCounts}">
+                    <li th:text="'Code ' + ${entry.key} + ': ' + ${entry.value} + ' facilities'"></li>
+                </ul>
             </div>
         </div>
     </div>
+
+    <!-- Room Count Analysis -->
+    <div class="card">
+        <div class="card-header">Top 15 Resorts by Room Count</div>
+        <div class="card-body">
+            <div class="chart-container" th:if="${showRoomPlot}">
+                <img th:src="@{${roomPlotPath}}" alt="Room count bar chart" class="img-fluid" />
+            </div>
+            <div class="alert alert-warning" th:if="${!showRoomPlot}">
+                Room count chart not available.
+            </div>
+        </div>
+    </div>
+
+    <!-- Occupancy Analysis -->
+    <div class="card">
+        <div class="card-header">Top 15 Resorts by Max Occupancy</div>
+        <div class="card-body">
+            <div class="chart-container" th:if="${showOccupancyPlot}">
+                <img th:src="@{${occupancyPlotPath}}" alt="Occupancy analysis bar chart" class="img-fluid" />
+            </div>
+            <div class="alert alert-warning" th:if="${!showOccupancyPlot}">
+                Occupancy chart not available.
+            </div>
+        </div>
+    </div>
+
+    <!-- Check-in Time Analysis -->
+    <div class="card mt-4">
+        <div class="card-header">Check-in Time Ranges by Resort Code</div>
+        <div class="card-body">
+            <div class="chart-container" th:if="${showCheckInPlot}">
+                <img th:src="@{${checkInTimePlotPath}}" alt="Check-in Time Ranges Chart" class="img-fluid" />
+            </div>
+            <div th:unless="${showCheckInPlot}" class="alert alert-warning">
+                Check-in time chart not available.
+            </div>
+        </div>
+    </div>
+
+    <!-- Resort Pricing Analysis -->
+    <div class="card">
+        <div class="card-header">Resort Pricing Analysis</div>
+        <div class="card-body">
+            <div class="chart-container" th:if="${pricingPlotPath}">
+                <img th:src="@{${pricingPlotPath}}" alt="Pricing analysis bar chart" class="img-fluid" />
+            </div>
+            <div class="alert alert-warning" th:if="${!pricingPlotPath}">
+                Pricing chart not available.
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
